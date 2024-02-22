@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-name">Natural Nude-AI</div>
+        <img class="header-logo" src="../../webimgs/logo.svg" alt="Logo">
+    </div>
+
+    <div class="form-container" id="create-account-form">
+        <h2>Create an account</h2>
+        <form id="customer-form" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br>
+            <input type="submit" value="Proceed to payment">
+        </form>
+    </div>
+
+    <div class="payment-options" id="make-payment-form" style="display: none;">
+        <div class="countdown-timer">Time remaining: <span id="countdown">10:00</span></div>
+        <h2>Make the Payment</h2>
+        <p id="greeting">Hi Guest</p>
+        <p>Your App ID: <span id="app-id"></span></p>
+        <img src="../../webimgs/pay-389.png" alt="pay" width="150"><br>
+        <h2>Scan to Pay</h2>
+        <div class="divider-container">
+            <div class="line2"></div>
+            <div class="or-text">Then</div>
+            <div class="line2"></div>
+        </div>
+        <div class="transaction-input">
+            <label for="transaction-id">Enter Transaction ID:</label>
+            <input type="text" id="transaction-id">
+            <button class="check-payment-button" onclick="checkPayment()">Check Payment</button>
+            <p id="payment-error" style="color: red;"></p>
+        </div>
+        <img class="bhim-logo" src="https://zeevector.com/wp-content/uploads/Upi-Logo-Vector.png" alt="BHIM UPI Logo" width="100">
+    </div>
+
+    <br>
+    <hr class="separator">
+
+    <div class="bottom">We do not save any data.</div>
+    <div class="bottom">We do not take any responsibility for images created using the App.</div>
+
+    <script src="script.js"></script>
+    <script>
+        var paymentReceived = false;
+
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (name.trim() === '') {
+                alert('Name is required');
+                return false;
+            }
+
+            if (email.trim() === '') {
+                alert('Email is required');
+                return false;
+            } else if (!email.match(emailFormat)) {
+                alert('Invalid email format');
+                return false;
+            }
+
+            if (password.trim() === '') {
+                alert('Password is required');
+                return false;
+            }
+
+            var createAccountForm = document.getElementById('create-account-form');
+            var makePaymentForm = document.getElementById('make-payment-form');
+
+            createAccountForm.style.display = 'none';
+            makePaymentForm.style.display = 'block';
+
+            var greeting = document.getElementById('greeting');
+            var appId = document.getElementById('app-id');
+            greeting.textContent = 'Hi ' + name;
+            appId.textContent = generateRandomAppID();
+            return false;
+        }
+
+        function generateRandomAppID() {
+            var characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var randomID = '';
+            var length = 10;
+
+            for (var i = 0; i < length; i++) {
+                randomID += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            return randomID;
+        }
+
+        function checkPayment() {
+            // Simulate a delay for checking payment (2 seconds)
+            setTimeout(function() {
+                paymentReceived = false; // Set to true if payment is received
+
+                if (!paymentReceived) {
+                    var paymentError = document.getElementById('payment-error');
+                    paymentError.textContent = 'Payment not received';
+                    paymentError.style.display = 'block';
+
+                    // Add a vibration effect (if supported)
+                    if (navigator.vibrate) {
+                        navigator.vibrate(200); // Vibrate for 200 milliseconds
+                    }
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

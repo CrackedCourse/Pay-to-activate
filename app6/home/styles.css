@@ -1,0 +1,157 @@
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none;}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #060618;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+}
+
+.header-name {
+    color: #fff;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.header-logo {
+    
+    width: 50px;
+    height: 50px;
+}
+
+/* Container */
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Image Upload Window */
+.image-upload-window {
+    width: 100%;
+    max-height: 100%;
+    min-height: 500px;
+    border: 3px solid #532e63;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1030;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.image-upload-window:hover {
+    border-color: #e96f00;
+}
+
+/* Image Preview */
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
+/* Enhance Button */
+#upload-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #e96f00;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#upload-button:hover {
+    background-color: #c75804;
+}
+
+/* Upload Icon and Text */
+.upload-icon {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.upload-icon img {
+    width: 60px;
+    height: 60px;
+    animation: rotate 3s infinite;
+}
+
+.upload-text {
+    text-align: center;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.separator {
+    border: none;
+    height: 3px;
+    background-color: #33004f;
+    margin: 30px 0;
+}
+
+.bottom {
+    font-weight: bold;
+    text-align: center;
+    color: #bfbfbf;
+    padding: 10px 0;
+    font-size: 17px;
+}
+
+
+/* Center the processing spinner */
+.processing-spinner {
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 10px solid black;
+    border-top: 10px solid rgb(5, 129, 245);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

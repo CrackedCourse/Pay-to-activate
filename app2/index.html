@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Rules</title>
+    <style>
+
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none;}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px; /* Added padding */
+            background-color: #060618;
+            color: #fff;
+        }
+
+        ol {
+            margin-left: 20px;
+        }
+
+        li {
+            font-size: 20px; /* Increased font size for rule lines */
+            margin-bottom: 10px; /* Added margin between rule lines */
+        }
+
+        p {
+            margin-top: 10px;
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px; 
+            color: #e96f00; /* Matched color to the button color */
+        }
+
+        .button-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            padding: 15px 0;
+            width: 90%;
+            background-color: #e96f00;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 25px;
+            background-image: url('webimgs/tic.png'); /* Replace with your tick image */
+            background-repeat: no-repeat;
+            background-position: 10px center; /* Adjust position as needed */
+            background-size: 25px 25px; /* Adjust size as needed */
+            padding-left: 40px; /* Adjust padding to make space for the image */
+        }
+
+        button:hover {
+            background-color: #cc5f00;
+        }
+
+        @media (max-width: 768px) {
+            ol {
+                margin-left: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                padding: 20px;
+            }
+
+            button {
+                padding: 12px 0;
+                margin-top: 20px;
+            }
+        }
+        
+        .separator {
+            border: none; /* Remove the default border */
+            height: 3px; /* Set the height of the line */
+            background-color: #33004f; /* Set the color of the line (white in this case) */
+            margin: 30px 0px 30px 0px; 
+        }
+        
+        .bottom {
+            font-weight: bold;
+            text-align: center;
+            color: #bfbfbf;
+            padding: 10px 0; /* Add padding of 30px at the top and bottom */
+            font-size: 17px; /* Increase the font size of the main text */
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+            margin-bottom: 0;
+        }
+        
+        .header-name {
+            color: #fff;
+            font-size: 27px;
+            font-weight: bold;
+        }
+        
+        .header-logo {
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+        }
+        
+        /* Additional CSS for button link */
+        .button-wrapper a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        color: #fff; /* Set the link color to match button text color */
+        }
+        
+        .button-wrapper a:hover {
+        text-decoration: none;
+        color: #fff; /* Set the link hover color to match button text color */
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <div class="header-name">Natural Nude-AI</div>
+        <img class="header-logo" src="webimgs/logo.svg" alt="Logo">
+    </div>
+    
+    <main>
+        <h1>RULES</h1>
+        <ol>
+            <li>You must be 18+ to use this website.</li><br>
+            <li>You can't use others' photos without their permission.</li><br>
+            <li>You are solely responsible for the images you generate.</li><br>
+        </ol>
+        <p>By clicking on <strong>Accept</strong>, you automatically agree to the above terms.</p>
+        <div class="button-wrapper">
+            <a href="home/" style="text-decoration: none;">
+                <button id="acceptButton">Accept</button>
+            </a>
+        </div>
+    </main>
+    <br>
+    <hr class="separator">
+    
+    <div class="bottom">We do not save any data.</div>
+    <div class="bottom">We do not take any responsibility for images created using the App.</div>
+
+    <script>
+        const acceptButton = document.getElementById('acceptButton');
+        acceptButton.addEventListener('click', function() {
+            // Perform actions when the user clicks "Accept"
+            // You can add your code here, like redirecting the user or enabling certain features.
+        });
+    </script>
+</body>
+</html>

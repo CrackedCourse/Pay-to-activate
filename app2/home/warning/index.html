@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Activation Warning</title>
+    <style>
+
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none;}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #060618;
+            color: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+            margin-bottom: 0;
+        }
+
+        .header-name {
+            color: #fff;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .header-logo {
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .warning-container {
+            padding: 20px;
+            text-align: left;
+            background-color: #1b1030;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .button-wrapper {
+        display: fixed;
+        justify-content: center;
+        }
+        
+        button {
+        padding: 15px 0;
+        width: 95%; /* Set width to 95% */
+        background-color: #e96f00;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        }
+        
+        button:hover {
+        background-color: #cc5f00;
+        }
+
+        @media (max-width: 768px) {
+            p {
+                font-size: 16px;
+            }
+
+            button {
+                padding: 12px 0;
+                margin-top: 20px;
+            }
+        }
+
+        .separator {
+            border: none;
+            height: 3px;
+            background-color: #33004f;
+            margin: 30px 0px 30px 0px;
+        }
+
+        .bottom {
+            font-weight: bold;
+            text-align: center;
+            color: #bfbfbf;
+            padding: 10px 0;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <div class="header-name">Natural Nude-AI</div>
+        <img class="header-logo" src="../../webimgs/logo.svg" alt="Logo">
+    </div>
+    
+    
+    
+    <div class="warning-container">
+        <h1>App Inactive</h1>
+        <div class="bullet-paragraph">
+        <p><b>We apologize, but the app is currently inactive.</b></p>
+        <ul>
+        <li>To activate the app, you need to create an account and complete the subscription payment process.</li>
+        <li>Price:&nbsp;<del style="color:red;" >₹1699</del>&nbsp;only&nbsp;<span style="color: #08ff10;">₹389</span> (One-time payment)</li>
+        <li>Please click the "Activate App" button below to proceed.</li>
+        <li><span style="color: #ffd608;">Lifetime access</span> with no image limit.</li>
+        </ul>
+        </div>
+        <div class="button-wrapper">
+            <a href="../pay/" style="text-decoration: none;">
+                <button id="activateButton">Activate App</button>
+            </a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr class="separator">
+    
+    <div class="bottom">We do not save any data.</div>
+    <div class="bottom">We do not take any responsibility for images created using the App.</div>
+</body>
+</html>

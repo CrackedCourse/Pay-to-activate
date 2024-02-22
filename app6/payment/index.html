@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-name">Natural Nude-AI</div>
+        <img class="header-logo" src="../webimgs/logo.svg" alt="Logo">
+    </div>
+
+    
+    <div class="payment-options" id="make-payment-form">
+        <div class="countdown-timer">Time remaining: <span id="countdown">10:00</span></div>
+        <h2>Make the Payment</h2>
+        <p id="greeting">Hi Guest</p>
+        <p>Your App ID: <span id="app-id"></span></p>
+        <img src="../webimgs/pay-389.png" alt="pay" width="150"><br>
+        <h2>Scan to Pay</h2>
+        <div class="divider-container">
+            <div class="line2"></div>
+            <div class="or-text">Then</div>
+            <div class="line2"></div>
+        </div>
+        <div class="transaction-input">
+            <label for="transaction-id">Enter Transaction ID:</label>
+            <input type="text" id="transaction-id">
+            <button class="check-payment-button" onclick="checkPayment()">Check Payment</button>
+            <p id="payment-error" style="color: red;"></p>
+        </div>
+        <img class="bhim-logo" src="../webimgs/upi.png" alt="BHIM UPI Logo" width="100">
+    </div>
+
+    <br>
+   <hr class="separator">
+
+    <div class="bottom">We do not save any data.</div>
+    <div class="bottom">We do not take any responsibility for images created using the App.</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

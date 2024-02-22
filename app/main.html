@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancement</title>
+    <style>
+
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none;}
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #060618;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+            margin-bottom: 0;
+        }
+
+        .header-name {
+            color: #fff;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .header-logo {
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Container */
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height:0vh;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Image Upload Window */
+        .image-upload-window {
+            width: 100%;
+            max-height: 100%;
+            min-height: 500px;
+            border: 3px solid #532e63;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1b1030;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0;
+        }
+
+        .image-upload-window:hover {
+            border-color: #e96f00;
+        }
+
+        /* Image Preview */
+        .image-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+
+        /* Enhance Button */
+        #enhance-button {
+            width: 100%;
+            margin-top: 20px;
+            background-color: #e96f00;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 20px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #enhance-button:hover{
+            background-color: #c75804;      
+            }
+
+        
+
+        /* Processing Popup */
+        .processing-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+        }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Processing Text */
+        .processing-text {
+            color: #fff;
+            font-size: 20px;
+            margin-top: 10px;
+            display: inline-block;
+            animation: ellipsis 1s infinite;
+        }
+
+        @keyframes ellipsis {
+            0%, 100% {
+                content: "";
+            }
+            25% {
+                content: ".";
+            }
+            50% {
+                content: "..";
+            }
+            75% {
+                content: "...";
+            }
+        }
+
+        /* Upload Icon and Text */
+        .upload-icon {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .upload-icon img {
+            width: 60px;
+            height: 60px;
+            animation: rotate 3s infinite;
+        }
+
+        .upload-text {
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        
+        .separator {
+        border: none; /* Remove the default border */
+        height: 3px; /* Set the height of the line */
+        background-color: #33004f; /* Set the color of the line (white in this case) */
+        margin: 30px 0px 30px 0px; 
+        }
+        
+        .bottom {
+        font-weight: bold;
+        text-align: center;
+        color: #bfbfbf;
+        padding: 10px 0; /* Add padding of 30px at the top and bottom */
+        font-size: 17px; /* Increase the font size of the main text */
+        }
+        
+        /* Download Icon */
+        .download-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        }
+        .download-icon img {
+        width: 40px;
+        height: 40px;
+        }
+        
+    </style>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const imageUpload = document.getElementById("image-upload");
+    const previewImage = document.getElementById("preview-image");
+    const enhanceButton = document.getElementById("enhance-button");
+    const processingPopup = document.querySelector(".processing-popup");
+    const processingAnimation = document.querySelector(".lds-ring");
+    const processingText = document.querySelector(".processing-text");
+    const uploadText = document.querySelector(".upload-text");
+    const uploadIcon = document.querySelector(".upload-icon");
+    const downloadIcon = document.getElementById("download-icon");
+    const downloadLink = document.getElementById("download-link");
+    
+    const preferredImages = [
+        "b1.png",
+        "b2.png",
+        "b3.png",
+        "b4.png"
+    ];
+    let currentImageIndex = 0;
+    
+    // Hide the download icon initially
+    downloadIcon.style.display = "none";
+    
+    imageUpload.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            previewImage.src = URL.createObjectURL(file);
+            previewImage.style.display = "block";
+            enhanceButton.innerText = "UNDRESS";
+            processingPopup.style.display = "none";
+            processingText.style.display = "none";
+            uploadText.style.display = "none";
+            uploadIcon.style.display = "none";
+            downloadIcon.style.display = "none"; // Hide the download icon when a new image is uploaded
+        } else {
+            previewImage.style.display = "none";
+            enhanceButton.innerText = "UNDO";
+            downloadIcon.style.display = "none"; // Hide the download icon if no image is uploaded
+        }
+    });
+    
+    enhanceButton.addEventListener("click", () => {
+        if (enhanceButton.innerText === "Upload Another Image") {
+            imageUpload.click();
+            downloadIcon.style.display = "none"; // Hide the download icon when uploading another image
+        } else {
+            if (previewImage.src) {
+                processingPopup.style.display = "flex";
+                processingText.style.display = "block";
+                showProcessingAnimation();
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    processingPopup.style.display = "none";
+                    processingText.style.display = "none";
+                    showNextPreferredImage();
+                    
+                    // Show the download icon if there's an image displayed
+                    if (previewImage.style.display === "block") {
+                        downloadIcon.style.display = "block";
+                        
+                        // Update the download link to the processed image
+                        downloadLink.href = previewImage.src;
+                    } else {
+                        downloadIcon.style.display = "none"; // Hide the download icon if no image is displayed
+                    }
+                    
+                    // Redirect to a specific link after animation
+                    window.location.href = "warning.html"; // Replace with your link
+                    
+                }, 1000); // Animation duration
+            }
+        }
+    });
+    
+    function showProcessingAnimation() {
+        processingAnimation.style.display = "block";
+    }
+    
+    function showNextPreferredImage() {
+        previewImage.src = preferredImages[currentImageIndex];
+        currentImageIndex = (currentImageIndex + 1) % preferredImages.length;
+        enhanceButton.innerText = "Upload Another Image";
+        imageUpload.value = "";
+    }i
+});
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-name">Natural Nude-AI</div>
+        <img class="header-logo" src="logo.svg" alt="Logo">
+    </div>
+    <div class="upload-container">
+        <label class="image-upload-window" for="image-upload">
+            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            <div class="upload-icon">
+                <img src="https://thenounproject.com/api/private/icons/4148535/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23532e63&foregroundOpacity=1&imageFormat=png&rotation=0" alt="Clipart Icon">
+            </div>
+            <div class="upload-text">Upload a photo<br>.jpg .png</div>
+            <img class="image-preview" id="preview-image" src="#" alt="">
+            <div class="download-icon" id="download-icon">
+                <a id="download-link" download="enhanced_image.jpg">
+                    <img src="download_icon.png" alt="Download Icon">
+                </a>
+            </div>
+        </label>
+        <button id="enhance-button">
+             UNDRESS
+        </button>
+        <div class="processing-popup">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="processing-text">Processing...</div>
+        </div>
+    </div>
+    
+    <hr class="separator">
+    
+    <div class="bottom">We do not save any data.</div>
+    <div class="bottom">We do not take any responsibility for images created using the App.</div>
+</body>
+</html>
