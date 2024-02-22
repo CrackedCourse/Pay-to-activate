@@ -1,0 +1,166 @@
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none;}
+
+/* Signup Form Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #060618;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+    margin-bottom: 70px;
+}
+
+.header-name {
+    color: #fff;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.header-logo {
+    
+    width: 50px;
+    height: 50px;
+}
+
+.form-container {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1b1030;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    font-weight: bold;
+    color: white;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    margin-bottom: 15px;
+    margin-top: 2px;
+    padding: 5px;
+    font-size: 20px;
+    border: 0.1px solid #3b3b3b;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+
+    
+
+.separator {
+    border: none;
+    height: 3px;
+    background-color: #33004f;
+    margin: 30px 0px 30px 0px;
+}
+
+#proceedButton {
+    font-weight: bold;
+    text-align: center;
+    color: #bfbfbf;
+    padding: 10px 0;
+    font-size: 17px;
+    background-color: #f07800;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+
+#proceedButton:hover {
+ background-color: #ff6105;
+}   
+    
+
+
+
+
+
+.loading {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.lds-ring {
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
